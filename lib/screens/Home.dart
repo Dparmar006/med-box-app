@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:med_box/helper/api_manager.dart';
 import 'package:med_box/models/medicines.dart';
+import 'package:med_box/widgets/MedicineInfo.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -33,14 +34,16 @@ class _HomeState extends State<Home> {
           title: Text('Home'),
         ),
         body: Container(
+            padding: EdgeInsets.all(10),
             child: !_loading
                 ? ListView.builder(
                     itemCount: _medicineModel.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        height: 100,
-                        color: Colors.cyan,
-                        child: Text(_medicineModel[index].name),
+                      return Medicine(
+                        name: _medicineModel[index].name,
+                        brandName: _medicineModel[index].brandName,
+                        price: _medicineModel[index].price,
+                        expDate: _medicineModel[index].expDate,
                       );
                     },
                   )
