@@ -25,7 +25,7 @@ class Medicines {
     this.unit,
   });
 
-  dynamic mfgDate;
+  DateTime mfgDate;
   DateTime expDate;
   List<String> disease;
   String id;
@@ -38,8 +38,8 @@ class Medicines {
   String unit;
 
   factory Medicines.fromJson(Map<String, dynamic> json) => Medicines(
-        mfgDate: json["mfgDate"],
-        expDate: DateTime.parse(json["expDate"]),
+        mfgDate: DateTime.parse(json["mfgDate"] ?? DateTime.now().toString()),
+        expDate: DateTime.parse(json["expDate"] ?? DateTime.now().toString()),
         disease: List<String>.from(json["disease"].map((x) => x)),
         id: json["_id"],
         brandName: json["brandName"],

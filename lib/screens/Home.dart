@@ -10,40 +10,40 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  Future<List<Medicines>> _medicineModel;
+  List<Medicines> _medicineModel;
+  bool _loading = true;
 
   @override
   void initState() {
-    _medicineModel = ApiManager().getMedicines();
+    getMedicines();
     super.initState();
+  }
+
+  Future<void> getMedicines() async {
+    _medicineModel = await ApiManager().getMedicines();
+    setState(() {
+      _loading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: Container(
-        child: FutureBuilder<List<Medicines>>(
-            future: _medicineModel,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return ListView.builder(
-                  itemCount: 1,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: 100,
-                      color: Colors.cyan,
-                      child: Text(snapshot.data[index].name),
-                    );
-                  },
-                );
-              } else {
-                return Center(child: CircularProgressIndicator());
-              }
-            }),
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Home'),
+        ),
+        body: Container(
+            child: !_loading
+                ? ListView.builder(
+                    itemCount: _medicineModel.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: 100,
+                        color: Colors.cyan,
+                        child: Text(_medicineModel[index].name),
+                      );
+                    },
+                  )
+                : Center(child: CircularProgressIndicator())));
   }
 }

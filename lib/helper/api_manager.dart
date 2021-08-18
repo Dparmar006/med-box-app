@@ -6,11 +6,14 @@ import 'package:med_box/models/medicines.dart';
 
 class ApiManager {
   List<Medicines> listMedicines = [];
-  var client = http.Client();
+  final apiClient = http.Client();
 
   Future<List<Medicines>> getMedicines() async {
+    print("CAlling");
     try {
-      var response = await client.get("${Api.baseUrl}/medicines");
+      print("int try");
+      var response = await apiClient.get(Uri.parse("${Api.baseUrl}/medicines"));
+      print(response.body);
       if (response.statusCode == 200) {
         List data = json.decode(response.body);
         data.forEach((element) {
@@ -18,15 +21,16 @@ class ApiManager {
         });
         print(listMedicines);
       }
-    } catch (Exception) {
+    } catch (e) {
+      print("Error: $e");
       return listMedicines;
     }
     return listMedicines;
   }
 
   void getSampleData() async {
-    var response =
-        await client.get('https://jsonplaceholder.typicode.com/comments');
+    var response = await apiClient
+        .get(Uri.parse('https://jsonplaceholder.typicode.com/comments'));
     var jsonString = response.body;
     var jsonMap = jsonDecode(jsonString);
   }
