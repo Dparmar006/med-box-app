@@ -11,9 +11,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'MedBox',
       theme: ThemeData(
-          primaryColor: Color(0xff0D0D0D),
-          accentColor: Color(0xff8743FF),
-          scaffoldBackgroundColor: Color(0xff171717)),
+        primaryColor: Color(0xff56C596),
+        accentColor: Color(0xff2C6975),
+        scaffoldBackgroundColor: Color(0xffffffff),
+      ),
       home: Home(),
     );
   }

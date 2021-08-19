@@ -15,11 +15,11 @@ class Medicine extends StatelessWidget {
     return Container(
       height: 200,
       margin: EdgeInsets.only(bottom: 10),
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
         border: Border.all(color: Theme.of(context).primaryColor),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(32),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +28,8 @@ class Medicine extends StatelessWidget {
           SizedBox(height: 5),
           Text(brandName, style: Constants.subtleText),
           Text('$price', style: Constants.subtleText),
-          Text('${new DateTime.now()}'),
+          Text('Expiring on ${expDate.day}/${expDate.month}/${expDate.year}',
+              style: Constants.subtleText),
         ],
       ),
     );

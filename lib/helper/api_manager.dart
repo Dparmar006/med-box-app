@@ -9,9 +9,7 @@ class ApiManager {
   final apiClient = http.Client();
 
   Future<List<Medicines>> getMedicines() async {
-    print("CAlling");
     try {
-      print("int try");
       var response = await apiClient.get(Uri.parse("${Api.baseUrl}/medicines"));
       print(response.body);
       if (response.statusCode == 200) {
@@ -19,7 +17,6 @@ class ApiManager {
         data.forEach((element) {
           listMedicines.add(Medicines.fromJson(element));
         });
-        print(listMedicines);
       }
     } catch (e) {
       print("Error: $e");
@@ -28,10 +25,13 @@ class ApiManager {
     return listMedicines;
   }
 
-  void getSampleData() async {
-    var response = await apiClient
-        .get(Uri.parse('https://jsonplaceholder.typicode.com/comments'));
-    var jsonString = response.body;
-    var jsonMap = jsonDecode(jsonString);
+  void postMedicine(Map map) async {
+    try {
+      var response = apiClient.post(Uri.parse("${Api.baseUrl}/medicines"),
+          body: jsonEncode(map));
+      print(response);
+    } catch (e) {
+      print(e);
+    }
   }
 }
