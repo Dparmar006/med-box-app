@@ -14,9 +14,15 @@ class Medicine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      margin: EdgeInsets.only(bottom: 10),
+      margin: EdgeInsets.all(15),
       padding: EdgeInsets.all(18),
       decoration: BoxDecoration(
+        boxShadow: [
+          new BoxShadow(
+            color: Theme.of(context).primaryColor,
+            blurRadius: 22,
+          )
+        ],
         color: Theme.of(context).primaryColor,
         border: Border.all(color: Theme.of(context).primaryColor),
         borderRadius: BorderRadius.circular(32),

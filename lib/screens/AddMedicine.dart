@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:med_box/constants/decoration.dart';
 import 'package:med_box/helper/api_manager.dart';
+import 'package:med_box/widgets/CustomButton.dart';
 import 'package:med_box/widgets/CustomInput.dart';
 
 class AddMedicine extends StatefulWidget {
@@ -95,6 +96,13 @@ class _AddMedicineState extends State<AddMedicine> {
                   controller: brandName,
                   decoration: InputDecoration(
                     labelText: "Name of the Brand",
+                    contentPadding: EdgeInsets.all(18),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    labelStyle:
+                        TextStyle(color: Theme.of(context).primaryColor),
+                    hintStyle: TextStyle(color: Theme.of(context).primaryColor),
                   ),
                 ),
                 TextField(
@@ -152,10 +160,10 @@ class _AddMedicineState extends State<AddMedicine> {
                     ],
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () => {addMedicine()},
-                  child: Text('Add', style: Constants.ragulerText),
-                )
+                SizedBox(height: 10),
+                CustomButton(
+                  onPressed: () => addMedicine(),
+                ),
               ],
             ),
           ],

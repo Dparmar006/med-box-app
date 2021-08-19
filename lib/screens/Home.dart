@@ -35,18 +35,20 @@ class _HomeState extends State<Home> {
           title: Text('Home'),
         ),
         floatingActionButton: FloatingActionButton.extended(
-            onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AddMedicine()),
-                  ),
-                },
-            label: Icon(Icons.add)),
+          icon: Icon(Icons.add),
+          label: Text('Add'),
+          onPressed: () => {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddMedicine()),
+            ),
+          },
+        ),
         body: SafeArea(
           child: GestureDetector(
             onTap: () => {print('object')},
             child: Container(
-                padding: EdgeInsets.all(10),
+                // padding: EdgeInsets.all(10),
                 child: !_loading
                     ? ListView.builder(
                         itemCount: _medicineModel.length,
