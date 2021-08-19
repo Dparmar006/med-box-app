@@ -11,7 +11,6 @@ class ApiManager {
   Future<List<Medicines>> getMedicines() async {
     try {
       var response = await apiClient.get(Uri.parse("${Api.baseUrl}/medicines"));
-      print(response.body);
       if (response.statusCode == 200) {
         List data = json.decode(response.body);
         data.forEach((element) {
@@ -25,13 +24,18 @@ class ApiManager {
     return listMedicines;
   }
 
-  void postMedicine(Map map) async {
+  void postMedicine(map) async {
     try {
-      var response = apiClient.post(Uri.parse("${Api.baseUrl}/medicines"),
-          body: jsonEncode(map));
-      print(response);
+      var response = await apiClient.post(Uri.parse("${Api.baseUrl}/medicines"),
+          body: jsonEncode(map),
+          headers: <String, String>{'Content-Type': 'application/json'});
+      if (response.statusCode == 201) {
+        print(
+          jsonDecode(response.body),
+        );
+      }
     } catch (e) {
-      print(e);
+      print('$e error');
     }
   }
 }

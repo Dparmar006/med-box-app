@@ -43,23 +43,26 @@ class _HomeState extends State<Home> {
                 },
             label: Icon(Icons.add)),
         body: SafeArea(
-          child: Container(
-              padding: EdgeInsets.all(10),
-              child: !_loading
-                  ? ListView.builder(
-                      itemCount: _medicineModel.length,
-                      itemBuilder: (context, index) {
-                        return Medicine(
-                          name: _medicineModel[index].name,
-                          brandName: _medicineModel[index].brandName,
-                          price: _medicineModel[index].price,
-                          expDate: _medicineModel[index].expDate,
-                        );
-                      },
-                    )
-                  : Center(
-                      child: CircularProgressIndicator(),
-                    )),
+          child: GestureDetector(
+            onTap: () => {print('object')},
+            child: Container(
+                padding: EdgeInsets.all(10),
+                child: !_loading
+                    ? ListView.builder(
+                        itemCount: _medicineModel.length,
+                        itemBuilder: (context, index) {
+                          return Medicine(
+                            name: _medicineModel[index].name,
+                            brandName: _medicineModel[index].brandName,
+                            price: _medicineModel[index].price,
+                            expDate: _medicineModel[index].expDate,
+                          );
+                        },
+                      )
+                    : Center(
+                        child: CircularProgressIndicator(),
+                      )),
+          ),
         ));
   }
 }
