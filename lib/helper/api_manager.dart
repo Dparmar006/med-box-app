@@ -38,4 +38,24 @@ class ApiManager {
       print('$e error');
     }
   }
+
+  Future<Medicines> getMedicineDetail() async {
+    Medicines medicine;
+    try {
+      var response = await apiClient.get(
+        Uri.parse("${Api.baseUrl}/medicines/611e70a4f5943b0016d4d315"),
+      );
+      if (response.statusCode == 200) {
+        print(
+          jsonDecode(response.body)['msg'],
+        );
+        var data = jsonDecode(response.body)['msg'];
+        medicine = Medicines.fromJson(data);
+      }
+    } catch (e) {
+      print('$e error');
+      return medicine;
+    }
+    return medicine;
+  }
 }

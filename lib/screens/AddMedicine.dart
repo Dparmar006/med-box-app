@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:med_box/constants/decoration.dart';
 import 'package:med_box/helper/api_manager.dart';
 import 'package:med_box/widgets/CustomButton.dart';
-import 'package:med_box/widgets/CustomInput.dart';
 
 class AddMedicine extends StatefulWidget {
   AddMedicine({Key key}) : super(key: key);
@@ -58,7 +57,7 @@ class _AddMedicineState extends State<AddMedicine> {
         firstDate: DateTime.now(),
         lastDate: DateTime(2040));
     setState(() {
-      expDate = _expDate;
+      expDate = _expDate ?? DateTime.now();
     });
   }
 
@@ -69,26 +68,24 @@ class _AddMedicineState extends State<AddMedicine> {
         firstDate: DateTime.now(),
         lastDate: DateTime(2040));
     setState(() {
-      mfgDate = _mfgDate;
+      mfgDate = _mfgDate ?? DateTime.now();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Add new medicine',
+          style: Constants.appBarText,
+        ),
+      ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
-              height: 50,
-              child: Text(
-                "Add new medicine",
-                style: Constants.headingText,
-              ),
-            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -142,7 +139,7 @@ class _AddMedicineState extends State<AddMedicine> {
                       ),
                       SizedBox(width: 10),
                       Text(
-                          'Expiring on ${expDate.day}/${expDate.month}/${expDate.year}'),
+                          "Expiring on ${expDate.day}/${expDate.month}/${expDate.year}")
                     ],
                   ),
                 ),

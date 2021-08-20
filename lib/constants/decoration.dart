@@ -9,4 +9,14 @@ class Constants {
     fontSize: 18,
     fontWeight: FontWeight.bold,
   );
+  static const appBarText = TextStyle(
+    color: Color(0xffffffff),
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  );
+  static const hugeTitleText = TextStyle(
+    color: Color(0xffffffff),
+    fontSize: 26,
+    fontWeight: FontWeight.bold,
+  );
 }

@@ -40,7 +40,7 @@ class Medicines {
   factory Medicines.fromJson(Map<String, dynamic> json) => Medicines(
         mfgDate: DateTime.parse(json["mfgDate"] ?? DateTime.now().toString()),
         expDate: DateTime.parse(json["expDate"] ?? DateTime.now().toString()),
-        disease: List<String>.from(json["disease"].map((x) => x)),
+        disease: List<String>.from(json["disease"].toList()),
         id: json["_id"],
         brandName: json["brandName"],
         name: json["name"],
@@ -50,6 +50,12 @@ class Medicines {
         price: json["price"],
         unit: json["unit"],
       );
+
+  List<String> mapTodieses(Map<String, dynamic> json) {
+    List<String> d = [];
+    json.values.map((e) => d.add(e));
+    return d;
+  }
 
   Map<String, dynamic> toJson() => {
         "mfgDate": mfgDate,

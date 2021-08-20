@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:med_box/helper/api_manager.dart';
 import 'package:med_box/models/medicines.dart';
 import 'package:med_box/screens/AddMedicine.dart';
+import 'package:med_box/screens/MedicineDetail.dart';
 import 'package:med_box/widgets/MedicineInfo.dart';
 
 class Home extends StatefulWidget {
@@ -40,13 +41,17 @@ class _HomeState extends State<Home> {
           onPressed: () => {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => AddMedicine()),
+              MaterialPageRoute(
+                  builder: (BuildContext context) => AddMedicine()),
             ),
           },
         ),
         body: SafeArea(
           child: GestureDetector(
-            onTap: () => {print('object')},
+            onTap: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MedicneDetail()))
+            },
             child: Container(
                 // padding: EdgeInsets.all(10),
                 child: !_loading
