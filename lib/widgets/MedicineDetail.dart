@@ -14,15 +14,10 @@ class MedicineDetail extends StatelessWidget {
       margin: EdgeInsets.all(15),
       padding: EdgeInsets.all(18),
       decoration: BoxDecoration(
-        boxShadow: [
-          new BoxShadow(
-            color: Theme.of(context).primaryColor,
-            blurRadius: 22,
-          )
-        ],
+        boxShadow: [BoxShadow(color: Color(0x110F0F0F), blurRadius: 12)],
         color: Theme.of(context).primaryColor,
         border: Border.all(color: Theme.of(context).primaryColor),
-        borderRadius: BorderRadius.circular(32),
+        borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

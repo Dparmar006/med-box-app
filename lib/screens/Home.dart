@@ -34,10 +34,12 @@ class _HomeState extends State<Home> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Home'),
+          elevation: 0,
         ),
-        floatingActionButton: FloatingActionButton.extended(
-          icon: Icon(Icons.add),
-          label: Text('Add'),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          // label: Text('Add'),
+
           onPressed: () => {
             Navigator.push(
               context,
