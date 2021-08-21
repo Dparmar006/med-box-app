@@ -39,11 +39,11 @@ class ApiManager {
     }
   }
 
-  Future<Medicines> getMedicineDetail() async {
+  Future<Medicines> getMedicineDetail(String medicineId) async {
     Medicines medicine;
     try {
       var response = await apiClient.get(
-        Uri.parse("${Api.baseUrl}/medicines/611e70a4f5943b0016d4d315"),
+        Uri.parse("${Api.baseUrl}/medicines/$medicineId"),
       );
       if (response.statusCode == 200) {
         print(

@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<Medicines> _medicineModel;
   bool _loading = true;
-
+  final String medicineId = '';
   @override
   void initState() {
     getMedicines();
@@ -38,40 +38,41 @@ class _HomeState extends State<Home> {
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
-          // label: Text('Add'),
-
           onPressed: () => {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => AddMedicine()),
+              MaterialPageRoute(builder: (context) => AddMedicine()),
             ),
           },
         ),
         body: SafeArea(
-          child: GestureDetector(
-            onTap: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MedicneDetail()))
-            },
-            child: Container(
-                // padding: EdgeInsets.all(10),
-                child: !_loading
-                    ? ListView.builder(
-                        itemCount: _medicineModel.length,
-                        itemBuilder: (context, index) {
-                          return Medicine(
+          child: Container(
+              child: !_loading
+                  ? ListView.builder(
+                      itemCount: _medicineModel.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MedicneDetail(),
+                                  settings: RouteSettings(
+                                      arguments: _medicineModel[index].id)),
+                            )
+                          },
+                          child: Medicine(
                             name: _medicineModel[index].name,
                             brandName: _medicineModel[index].brandName,
                             price: _medicineModel[index].price,
                             expDate: _medicineModel[index].expDate,
-                          );
-                        },
-                      )
-                    : Center(
-                        child: CircularProgressIndicator(),
-                      )),
-          ),
+                          ),
+                        );
+                      },
+                    )
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    )),
         ));
   }
 }

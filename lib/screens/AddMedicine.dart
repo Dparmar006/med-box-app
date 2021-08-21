@@ -47,6 +47,7 @@ class _AddMedicineState extends State<AddMedicine> {
     name.dispose();
     importedQuantity.dispose();
     availabeQuantity.dispose();
+    price.dispose();
     super.dispose();
   }
 
@@ -82,11 +83,10 @@ class _AddMedicineState extends State<AddMedicine> {
         ),
       ),
       body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Column(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Container(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextField(
@@ -97,21 +97,28 @@ class _AddMedicineState extends State<AddMedicine> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(6),
                     ),
-                    labelStyle:
-                        TextStyle(color: Theme.of(context).primaryColor),
-                    hintStyle: TextStyle(color: Theme.of(context).primaryColor),
+                    labelStyle: TextStyle(color: Theme.of(context).accentColor),
+                    hintStyle: TextStyle(color: Theme.of(context).accentColor),
                   ),
                 ),
                 TextField(
                   controller: name,
                   decoration: InputDecoration(
                     labelText: "Name",
+                    contentPadding: EdgeInsets.all(18),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
                   ),
                 ),
                 TextField(
                   controller: price,
                   decoration: InputDecoration(
                     labelText: "Price",
+                    contentPadding: EdgeInsets.all(18),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
                   ),
                   keyboardType: TextInputType.number,
                 ),
@@ -119,6 +126,10 @@ class _AddMedicineState extends State<AddMedicine> {
                   controller: importedQuantity,
                   decoration: InputDecoration(
                     labelText: "Imported quantity",
+                    contentPadding: EdgeInsets.all(18),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
                   ),
                   keyboardType: TextInputType.number,
                 ),
@@ -126,6 +137,10 @@ class _AddMedicineState extends State<AddMedicine> {
                   controller: availabeQuantity,
                   decoration: InputDecoration(
                     labelText: "Availabe quantity",
+                    contentPadding: EdgeInsets.all(18),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
                   ),
                   keyboardType: TextInputType.number,
                 ),
@@ -157,15 +172,16 @@ class _AddMedicineState extends State<AddMedicine> {
                     ],
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 5),
                 CustomButton(
                   onPressed: () => addMedicine(),
+                  title: 'ADD',
                 ),
               ],
             ),
-          ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }

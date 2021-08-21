@@ -5,6 +5,8 @@ class Constants {
 
   static const ragulerText = TextStyle(
       color: Color(0x771E1C61), fontSize: 16, fontWeight: FontWeight.bold);
+  static const ragulerWhiteText = TextStyle(
+      color: Color(0xffffffff), fontSize: 16, fontWeight: FontWeight.bold);
 
   static const ragulerDangerText = TextStyle(
       color: Color(0xFFEF5350), fontSize: 16, fontWeight: FontWeight.bold);
@@ -27,7 +29,12 @@ class Constants {
     fontSize: 26,
     fontWeight: FontWeight.bold,
   );
-// DATE
 
-  // static const monthYear = ;
+// INPUT
+  static var defaultInput = InputDecoration(
+    border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+    contentPadding: EdgeInsets.all(18),
+    labelStyle: TextStyle(color: Color(0x771E1C61)),
+    hintStyle: TextStyle(color: Color(0x771E1C61)),
+  );
 }

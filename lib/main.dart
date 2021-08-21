@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'MedBox',
       theme: ThemeData(
         primaryColor: Color(0xffffffff),
-        accentColor: Color(0x771E1C61),
+        accentColor: Color(0xff1E1C61),
         scaffoldBackgroundColor: Color(0xffF9F9F9),
       ),
       home: Home(),

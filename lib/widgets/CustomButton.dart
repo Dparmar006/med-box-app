@@ -3,7 +3,8 @@ import 'package:med_box/constants/decoration.dart';
 
 class CustomButton extends StatelessWidget {
   final onPressed;
-  const CustomButton({Key key, this.onPressed}) : super(key: key);
+  final String title;
+  const CustomButton({Key key, this.onPressed, this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +15,11 @@ class CustomButton extends StatelessWidget {
           width: double.infinity,
           padding: EdgeInsets.symmetric(vertical: 14, horizontal: 30),
           decoration: BoxDecoration(
-              color: Theme.of(context).accentColor,
-              borderRadius: BorderRadius.circular(32),
-              boxShadow: [
-                new BoxShadow(
-                  color: Color(0x88329D9C),
-                  blurRadius: 24,
-                )
-              ]),
-          child:
-              Center(child: Text('Button Text', style: Constants.ragulerText)),
+            boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 12)],
+            color: Theme.of(context).accentColor,
+            borderRadius: BorderRadius.circular(32),
+          ),
+          child: Center(child: Text(title, style: Constants.ragulerWhiteText)),
         ),
       ),
     );

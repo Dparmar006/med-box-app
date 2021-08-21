@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:med_box/constants/decoration.dart';
 
 class Medicine extends StatelessWidget {
@@ -29,7 +30,8 @@ class Medicine extends StatelessWidget {
           SizedBox(height: 5),
           Text(brandName, style: Constants.subtleText),
           Text('$price', style: Constants.subtleText),
-          Text('Expiring on ${expDate.day}/${expDate.month}/${expDate.year}',
+          Text(
+              'Expiring on ${DateFormat('MMMM').format(expDate)} ${expDate.year}',
               style: Constants.subtleText),
         ],
       ),

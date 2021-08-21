@@ -3,8 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:med_box/constants/decoration.dart';
 import 'package:med_box/helper/api_manager.dart';
 import 'package:med_box/models/medicines.dart';
-import 'package:med_box/widgets/MedicineDetail.dart';
-import 'package:med_box/widgets/MedicineInfo.dart';
 
 class MedicneDetail extends StatefulWidget {
   const MedicneDetail({Key key}) : super(key: key);
@@ -16,6 +14,7 @@ class MedicneDetail extends StatefulWidget {
 class _MedicneDetailState extends State<MedicneDetail> {
   Medicines _medicine;
   bool _loading = true;
+  String medicineId;
 
   @override
   void initState() {
@@ -25,7 +24,6 @@ class _MedicneDetailState extends State<MedicneDetail> {
 
   Future<void> getMedicinesDetails() async {
     _medicine = await ApiManager().getMedicineDetail();
-    print(_medicine);
     setState(() {
       _loading = false;
     });
@@ -33,6 +31,8 @@ class _MedicneDetailState extends State<MedicneDetail> {
 
   @override
   Widget build(BuildContext context) {
+    // medicineId = ModalRoute.of(context).settings.arguments as String;
+
     return Scaffold(
       // appBar: AppBar(
       //   title: Text(_medicine == null ? '' : _medicine.name),
